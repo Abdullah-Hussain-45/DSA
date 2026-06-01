@@ -13,6 +13,7 @@ public class LinkedList{
 			Node newNode = new Node(data);
 			newNode.next = head;
 			head = newNode;
+			
 		}
 	//InsertAtEnd
 	public void insertAtEnd(String data){
@@ -97,6 +98,23 @@ public class LinkedList{
 			currNode = currNode.next;
 			count++;
 		}
+		System.out.println("Index is out of Bounds");
+	}
+	//Searching by key
+	public void searchingByKey(String key){
+		if(head==null){
+			System.out.println("LinkedList is empty.");
+			return;
+		}
+		Node currNode = head;
+		while(currNode!=null){
+			if(currNode.data==key){
+				System.out.println("Node is found "+ currNode.data );
+				break;
+			}
+			currNode = currNode.next;
+		}
+			System.out.println("Node is not found.");
 	}
 			
 		
@@ -118,9 +136,11 @@ public static void main(String arg[]){
 	list.insertAtEnd("A");
 	list.insertAtEnd("B");
 	list.insertAtEnd("C");
-	list.insertAtPosition(3,"X");
 	list.printAll();
-	list.removeByPosition(3);
+	list.insertAtFront("X");
+	list.printAll();
+	list.searchingByKey("Z");
+
 
 	
 	
