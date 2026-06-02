@@ -8,15 +8,15 @@
 		}
 public class LinkedList{
 	Node head;
-	//InsertAtFirst
-	public void insertAtFront(String data){
+	
+	public void insertAtFront(String data){	//InsertAtFirst
 			Node newNode = new Node(data);
 			newNode.next = head;
 			head = newNode;
 			
 		}
-	//InsertAtEnd
-	public void insertAtEnd(String data){
+	
+	public void insertAtEnd(String data){ //InsertAtEnd
 			Node newNode = new Node(data);
 			if(head == null){
 				head = newNode;
@@ -28,8 +28,8 @@ public class LinkedList{
 		currNode.next = newNode;
 		}
 	}
-	//InsertAtPosition
-	public void insertAtPosition(int index,String data){
+	
+	public void insertAtPosition(int index,String data){ //InsertAtPosition
 		if(index==0){
 			insertAtFront(data);
 			return;
@@ -48,8 +48,8 @@ public class LinkedList{
 			count++;
 		}
 	}
-	//removing Node from Front
-	public void removeFront(){
+	
+	public void removeFront(){ //removing Node from Front
 		if(head == null){
 			System.out.println("LinkedList is empty.");
 			return;
@@ -59,8 +59,8 @@ public class LinkedList{
 		printAll();
 		return;
 	}
-	//removing Node from End
-	public void removeEnd(){
+	
+	public void removeEnd(){  //removing Node from End
 		if(head==null){
 			System.out.println("LinkedList is empty.");
 		return;
@@ -74,7 +74,7 @@ public class LinkedList{
 		printAll();
 		return;
 	}
-	public void removeByPosition(int index){
+	public void removeByPosition(int index){ //removing node by position
 		if(head==null){
 			System.out.println("LinkedList is empty.");
 			return;
@@ -93,15 +93,15 @@ public class LinkedList{
 				currNode.next = currNode.next.next;
 				System.out.println("Node is removed from position "+(index+1));
 				printAll();
-				break;	
+				return;	
 			}
 			currNode = currNode.next;
 			count++;
 		}
 		System.out.println("Index is out of Bounds");
 	}
-	//Searching by key
-	public void searchingByKey(String key){
+	
+	public void searchingByKey(String key){ //Searching by key
 		if(head==null){
 			System.out.println("LinkedList is empty.");
 			return;
@@ -110,16 +110,51 @@ public class LinkedList{
 		while(currNode!=null){
 			if(currNode.data==key){
 				System.out.println("Node is found "+ currNode.data );
-				break;
+				return;
 			}
 			currNode = currNode.next;
 		}
 			System.out.println("Node is not found.");
 	}
-			
 		
+	public void getHead(){	// getting head	
+		if(head==null){
+			System.out.println("LinkedList is empty. ");
+			return;
+		}
+		System.out.println("Head Node is "+head.data);
+		return;
+	}
 	
-	public void printAll(){
+	public void getTail(){	//getting Tail
+		if(head==null){
+			System.out.println("LinkedList is empty. ");
+			return;
+		}
+		Node currNode=head;
+		while(currNode.next!=null){
+			currNode = currNode.next;
+		}
+		System.out.println("Last Node is "+currNode.data);
+		return;
+	}
+	
+	public void reverseLinkedList(){
+		Node currNode = head;
+		Node nextNode = null;
+		Node prevNode = null;
+		while(currNode!=null){
+			nextNode = currNode.next;
+			currNode.next = prevNode;
+			prevNode = currNode;
+			currNode = nextNode;
+		}
+		head = prevNode;
+		System.out.println("LinkedList is reversed. ");
+		printAll();
+	}
+	
+	public void printAll(){ // Traversing all Nodes and printing each node
 		Node temp = head;
 		while(temp!=null){
 			System.out.print(temp.data+"->");
@@ -136,10 +171,9 @@ public static void main(String arg[]){
 	list.insertAtEnd("A");
 	list.insertAtEnd("B");
 	list.insertAtEnd("C");
-	list.printAll();
-	list.insertAtFront("X");
-	list.printAll();
-	list.searchingByKey("Z");
+	list.insertAtEnd("D");
+	list.insertAtEnd("E");
+	list.reverseLinkedList();
 
 
 	
