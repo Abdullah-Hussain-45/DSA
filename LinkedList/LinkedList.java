@@ -101,20 +101,23 @@ public class LinkedList{
 		System.out.println("Index is out of Bounds");
 	}
 	
-	public void searchingByKey(String key){ //Searching by key
+	public boolean searchingByKey(String key){ //Searching by key
 		if(head==null){
 			System.out.println("LinkedList is empty.");
-			return;
+			return true;
 		}
 		Node currNode = head;
+		boolean isFound = false;
 		while(currNode!=null){
 			if(currNode.data==key){
+				isFound = true;
 				System.out.println("Node is found "+ currNode.data );
-				return;
+				return isFound;
 			}
 			currNode = currNode.next;
 		}
-			System.out.println("Node is not found.");
+		System.out.println("Node is not found.");
+		return isFound;
 	}
 		
 	public void getHead(){	// getting head	
@@ -139,10 +142,8 @@ public class LinkedList{
 		return;
 	}
 	
-	public void reverseLinkedList(){
-		Node currNode = head;
-		Node nextNode = null;
-		Node prevNode = null;
+	public void reverseLinkedList(){ //reversing LinkedList
+		Node currNode = head,nextNode = null,prevNode = null;
 		while(currNode!=null){
 			nextNode = currNode.next;
 			currNode.next = prevNode;
@@ -174,6 +175,7 @@ public static void main(String arg[]){
 	list.insertAtEnd("D");
 	list.insertAtEnd("E");
 	list.reverseLinkedList();
+	list.searchingByKey("E");
 
 
 	
