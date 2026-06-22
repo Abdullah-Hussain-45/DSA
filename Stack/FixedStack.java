@@ -7,16 +7,19 @@ class myStack{
 		arr = new int[capacity];
 		top = -1;
 	}
+	public boolean isFull(){
+		return top == capacity -1;
+	}
 	
-	public void push(int data){
-		if(top == capacity-1){
+	public void push(int data){ // adding element - Time Complexity - 0(1)
+		if(isFull()){
 			System.out.println("Stack overflow(full).");
 			return;
 		}
 		arr[++top] = data;
 	}
 	
-	public int pop(){
+	public int pop(){ // removing element - Time Complexity - 0(1)
 		if(isEmpty()){
 			System.out.println("Stack underflow(empty).");
 			return -1;
@@ -24,7 +27,7 @@ class myStack{
 		return arr[top--];
 	}
 	
-	public int peek(){
+	public int peek(){ //top element in the stack - Time Complexity - 0(1)
 		if(isEmpty()){
 			System.out.println("Stack underflow(empty).");
 			return -1;
@@ -36,7 +39,7 @@ class myStack{
 		return top == -1;
 	}
 	
-	public void display(){
+	public void display(){ //traversing - Time Complexity - 0(1)
 		if(isEmpty()){
 			System.out.println("Stack underflow(empty).");
 			return;

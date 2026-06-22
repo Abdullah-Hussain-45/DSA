@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 class Node{
 	int data;
 	Node next;
@@ -8,19 +10,25 @@ class Node{
 }
 public class DynamicStack{
 	Node top; //top element in the stack
-	int count;
-	DynamicStack(){
+	int size;
+	int capacity;
+	DynamicStack(int cap){
 		top = null;
-		count = 0; //to store the size of the Stack
+		size = 0; //to store the size of the Stack
+		capacity = cap; 
 	}
-	public void push(int data){
+	public void push(int data){// addFirst method of LinkedList - Time Complexity - 0(1)
+		if(isFull()){
+			throw new RuntimeException("Stack is full");
+		}
+		 
 		Node element = new Node(data);
 		element.next = top;
 		top = element;
-		count++;
+		size++;
 	}
 	
-	public int pop(){
+	public int pop(){ //deleteFront method of LinkedList  - Time Complexity - 0(1)
 		if(isEmpty()){
 			System.out.println("Stack is underflow.");
 			return -1;
@@ -29,7 +37,7 @@ public class DynamicStack{
 		top = top.next;
 		int val = temp.data;
 		temp = null;
-		count--;
+		size--;
 		return val;
 	}
 	
@@ -46,7 +54,11 @@ public class DynamicStack{
 	}
 	
 	public int size(){
-		return count;
+		return size;
+	}
+
+	public boolean isFull(){
+		return size == capacity;
 	}
 	
 	public void display(){
@@ -64,14 +76,25 @@ public class DynamicStack{
 	
 	
 	public static void main(String args[]){
-		DynamicStack stack = new DynamicStack();
+		int capacity = 5;
+		DynamicStack stack = new DynamicStack(capacity);
+		Scanner scan = new Scanner(System.in);
+
 		stack.push(1);
 		stack.push(2);
 		stack.push(3);
 		stack.push(4);
+		stack.push(5);
+		//stack.push(6);
+
 		stack.display();
+		/*while(!stack.isFull()){
+			System.out.println("Enter the data: ");
+			int data = scan.nextInt();
+			stack.push(data);
+		}*/
 		
-		//while(!stack.isEmpty()){
+		while(!stack.isEmpty()){
 		//Poping Elements from Stack
 		System.out.println("\nPoped Element: "+stack.pop());
 		
@@ -84,7 +107,7 @@ public class DynamicStack{
 		
 		//Size of Elements
 		System.out.println("Size of the Stack: "+stack.size());
-		//}
-		
+		}
+		scan.close();
 	}
 }
