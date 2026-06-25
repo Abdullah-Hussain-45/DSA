@@ -15,7 +15,7 @@ public class CircularLListWithoutTail{
         this.head = null;
     }
 
-    public void addFront(int data) { // adding to front 0(1)
+    public void addFront(int data) { // adding to front 0(n)
         Node newNode = new Node(data);
 
         if (head == null) {
@@ -216,8 +216,8 @@ public class CircularLListWithoutTail{
         circular.addFront(10);
         circular.addFront(20);
         circular.addFront(30);
-        circular.display();
-        circular.addBefore(20,12);
+		circular.display();
+        circular.addBefore(10,12);
         circular.display();
     }
 

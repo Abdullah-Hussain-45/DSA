@@ -173,7 +173,7 @@ public class DoublyLinkedListWithTail{
 		System.out.println("Node not found.");	
 	}
 
-	public void removeBack(){
+	public void removeBack(){ // Time Complexity - 0(1)
 		if(head == null && tail == null){
 			System.out.println("List is empty.");
 			return;
@@ -211,7 +211,9 @@ public class DoublyLinkedListWithTail{
 		list.addToFront(2);
 		list.addToLast(4);
 		list.addToLast(5);
-		list.display();		
+		list.display();	
+		list.updateNode(2,19);
+		list.display();
 		
 	}
 	

@@ -79,14 +79,17 @@ public class DynamicStack{
 		int capacity = 5;
 		DynamicStack stack = new DynamicStack(capacity);
 		Scanner scan = new Scanner(System.in);
-
-		stack.push(1);
-		stack.push(2);
-		stack.push(3);
-		stack.push(4);
-		stack.push(5);
-		//stack.push(6);
-
+		try{
+			while(stack.size != (capacity + 1)){
+				System.out.print("Enter the data: ");
+				int data = scan.nextInt();
+				stack.push(data);
+			}
+		}
+		catch(RuntimeException e){
+			System.out.println(e.getMessage());
+		}
+		finally{
 		stack.display();
 		/*while(!stack.isFull()){
 			System.out.println("Enter the data: ");
@@ -94,20 +97,21 @@ public class DynamicStack{
 			stack.push(data);
 		}*/
 		
-		while(!stack.isEmpty()){
-		//Poping Elements from Stack
-		System.out.println("\nPoped Element: "+stack.pop());
-		
-		stack.display();
-		//Peek Element from Stack
-		System.out.println("Peek Element: "+stack.peek());
-		
-		//Checking stack is empty or not
-		System.out.println("Is Stack empty: "+(stack.isEmpty() ? "Yes" : "No"));
-		
-		//Size of Elements
-		System.out.println("Size of the Stack: "+stack.size());
-		}
+			while(!stack.isEmpty()){
+			//Poping Elements from Stack
+			System.out.println("\nPoped Element: "+stack.pop());
+			
+			stack.display();
+			//Peek Element from Stack
+			System.out.println("Peek Element: "+stack.peek());
+			
+			//Checking stack is empty or not
+			System.out.println("Is Stack empty: "+(stack.isEmpty() ? "Yes" : "No"));
+			
+			//Size of Elements
+			System.out.println("Size of the Stack: "+stack.size());
+			}
 		scan.close();
+		}
 	}
 }

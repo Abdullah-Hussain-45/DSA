@@ -1,0 +1,145 @@
+//Circular Queue is more flexible than Normal Queue
+//it follows the f(rear,size) =  (rear +1 ) % size function
+import java.util.*;
+class Queue{
+	int[] arr;
+	int capacity;
+	static int rear;
+	static int front;
+	int size;
+	
+	Queue(int capacity){ // Constructor to initialize the objects 
+		this.capacity = capacity;
+		arr = new int[this.capacity];
+		rear = -1;
+		front = -1;
+		size = 0;
+	}
+	
+	public boolean isEmpty(){
+		return rear == -1 && front == -1;
+	}
+	
+	public boolean isFull(){
+		return size == capacity;
+	}
+	public int capacity(){
+		return capacity;
+	}
+
+	public int size(){
+		return size;
+	}	
+	public void enQueue(int data){ //adding elements - Time Complexity->0(1)
+		if(isFull()){
+			throw new RuntimeException("Queue is full.");
+		}
+		//if first element then front must be  0
+		if(front == -1){
+			front = 0;
+		}
+		size++;
+		rear = (rear + 1)  % capacity;
+		arr[rear] = data;
+
+	}
+	
+	public int deQueue(){// removing elements from Queue - Time Complexity->0(1)
+		if(isEmpty()){
+			throw new RuntimeException("Queue is empty!");
+		}
+		
+		int result = arr[front];
+	
+		/*if there is only single element which means rear and front
+		are in same location then both must be = -1 */
+		if(rear == front){
+			rear = front = -1;
+		}
+		else{
+			front = (front + 1) % capacity;
+		}
+		size--;
+		return result;
+	}
+	
+	public int peek(){// front element in the queue - Time Complexity->0(1)
+		if(isEmpty()){
+			throw new RuntimeException("Queue is empty!");
+		}
+		return arr[front];	
+	}
+	public void display(){ //displaying the queue elements
+		if(isEmpty()){
+			throw new RuntimeException("Queue is empty!");
+		}
+		System.out.print("Elements in the queue: ");
+		int i = front;
+		for(int count = 0; count < size; count++){
+			System.out.print(arr[i]+" ");
+			i = (i + 1) % capacity;
+		}
+	}
+	
+}
+public class CircularQueueForUser{
+	public static void main(String args[]){
+		
+		Queue q;
+        Scanner scan = new Scanner(System.in);
+        System.out.print("Welcome to the Queue Data Structure");
+        System.out.print("How much elements you want to store?Enter the capacity value: ");
+        int capacity = scan.nextInt();
+        new Queue(capacity);
+
+		do{
+            System.out.print("1.Add elements in the Queue");
+            System.out.print("2.Remove elements from the Queue");
+            System.out.print("3.Show elements");
+            System.out.print("4.Size of the Queue");
+            System.out.print("5.Capacity of the Queue");
+            System.out.print("6.Exit");
+            System.out.print("Enter the choice: ");
+            int choice = scan.nextInt();
+
+            if(choice == 1){
+                try{
+                    System.out.print("Enter the value: ");
+                    int value = scan.nextInt();
+                    q.enQueue(value);
+                }
+                catch(RuntimeException e){
+                    System.out.println("Error: "+e.getMessage());
+                }
+            }
+            else if(choice==2){
+                try{
+                    q.deQueue();
+                }
+                catch(RuntimeException e){
+                    System.out.println("Error: "+e.getMessage());
+                }
+            }
+            else if(choice==3){
+                try{
+                    q.display();
+                }
+                catch(RuntimeException e){
+                    System.out.println("Error: "+e.getMessage());
+                }
+            }
+            else if(choice==4){
+                System.out.print(q.size());
+            }
+            
+            else if(choice==5){
+                    q.capacity();
+            }
+            else if(choice==6){
+                break;
+            }
+            else{
+                System.out.println("Input Valid Error");
+            }
+        }
+}

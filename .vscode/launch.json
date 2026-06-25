@@ -1,0 +1,77 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "sortMax",
+            "request": "launch",
+            "mainClass": "sortMax",
+            "projectName": "DSA_dcfac95c"
+        },
+        {
+            "type": "java",
+            "name": "CircularQueue",
+            "request": "launch",
+            "mainClass": "CircularQueue",
+            "projectName": "DSA_dcfac95c"
+        },
+        {
+            "type": "java",
+            "name": "FixedStack",
+            "request": "launch",
+            "mainClass": "FixedStack",
+            "projectName": "DSA_dcfac95c"
+        },
+        {
+            "type": "java",
+            "name": "DynamicStack",
+            "request": "launch",
+            "mainClass": "DynamicStack",
+            "projectName": "DSA_dcfac95c"
+        },
+        {
+            "type": "java",
+            "name": "QueueUsing2Stacks",
+            "request": "launch",
+            "mainClass": "QueueUsing2Stacks",
+            "projectName": "DSA_dcfac95c"
+        },
+        {
+            "type": "java",
+            "name": "QueueUsingStacks",
+            "request": "launch",
+            "mainClass": "QueueUsingStacks",
+            "projectName": "DSA_dcfac95c"
+        },
+        {
+            "type": "java",
+            "name": "QueueUsingLinkedList",
+            "request": "launch",
+            "mainClass": "QueueUsingLinkedList",
+            "projectName": "DSA_dcfac95c"
+        },
+        {
+            "type": "java",
+            "name": "CircularDoublyLListWithTail",
+            "request": "launch",
+            "mainClass": "CircularDoublyLListWithTail",
+            "projectName": "DSA_4061f97b"
+        },
+        {
+            "type": "java",
+            "name": "CircularDoublyLListWithTail",
+            "request": "launch",
+            "mainClass": "CircularDoublyLList.CircularDoublyLListWithTail",
+            "projectName": "DSA_4061f97b"
+        },
+        {
+            "type": "java",
+            "name": "Launch Current File",
+            "request": "launch",
+            "mainClass": "${file}"
+        }
+    ]
+}

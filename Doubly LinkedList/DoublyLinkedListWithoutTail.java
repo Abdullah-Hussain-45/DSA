@@ -210,8 +210,8 @@ public class DoublyLinkedListWithoutTail{
 		DoublyLinkedListWithoutTail list = new DoublyLinkedListWithoutTail();
 		list.addToFront(1);
 		list.addToFront(0);
-		list.addToLast(2);
-		list.addAfter(2,4);
+		list.addToLast(5);
+		list.addBefore(0,3);
 		list.display();
 		
 	}

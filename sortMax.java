@@ -57,38 +57,40 @@ class myStack{
 	}
 	
 }
-public class FixedStack{
+public class sortMax{
 	public static void main(String[] args){
-		Scanner scan = new Scanner(System.in);
-		System.out.print("Enter the capacity of stack: ");
-		int capacity = scan.nextInt();
-		myStack stack = new myStack(capacity);
-		try {
-			while(stack.top != stack.capacity){
-				System.out.print("Enter the elements: ");
-				int data = scan.nextInt();
-				stack.push(data);
-			}
-		}
-		catch(RuntimeException e){
-			System.out.println(e.getMessage());
-		}
-		try{
-			System.out.println("Elements in the stack");
-			stack.display();
-			
-			while(!stack.isEmpty()){
-			System.out.println("Peek Element: "+stack.peek());
-			System.out.println("Poped Element: "+stack.pop());
-			System.out.println("Is Stack empty? "+(stack.isEmpty() ? "Yes" : "No"));
-			System.out.println("Elements in the stack");
-			stack.display();
-			}
-		}
-		catch(RuntimeException e){
-			System.out.println(e.getMessage());
-		}
-		scan.close();
+        myStack s1 = new myStack(5);
+        myStack s2 = new myStack(5);
+        try{
+            s1.push(7);
+            s1.push(2);
+            s1.push(4);
+            s1.push(8);
+            s1.push(3);
+            int max = s1.pop();
+            while(!s1.isEmpty()){
+                int poped = s1.pop();
+                if(poped > max){
+                int temp = max;
+                max = poped;
+                s2.push(temp);
+                }
+                else{
+                    s2.push(poped);
+                }
+            }
+            while (!s2.isEmpty()) {
+                s1.push(s2.pop());   
+            }
+            System.out.println("Max element in the stack: "+max);
+            s1.push(max);
+            s1.display();
+            s2.display();
+        }
+        catch(RuntimeException e){
+            System.err.println(e.getMessage());
+        }
+		
 		
 	}
 }

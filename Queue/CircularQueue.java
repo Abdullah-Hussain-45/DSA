@@ -86,6 +86,7 @@ public class CircularQueue{
 	public static void main(String args[]){
 		int capacity = 3;
 		Queue q = new Queue(capacity);
+		
 		try{
 			q.enQueue(1);
 			q.enQueue(2);

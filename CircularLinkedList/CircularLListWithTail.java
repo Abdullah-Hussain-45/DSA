@@ -235,10 +235,9 @@ public class CircularLListWithTail {
         CircularLListWithTail circular = new CircularLListWithTail();
         circular.addFront(10);
         circular.addBack(20);
-        circular.addAfter(20, 30);
-        circular.addAfter(20, 40);
+		circular.addBack(30);
         circular.display();
-        circular.addBefore(10, 50);
+        circular.updateNode(10,15);
         circular.display();
         circular.getTail();
         circular.getHead();
