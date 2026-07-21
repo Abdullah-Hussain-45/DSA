@@ -51,20 +51,48 @@ class maxHeap{
             System.out.println("Heap is empty.");
             return -1;
         }
-        int index = 0
-        heap[size] = heap[index];
-        int max = heap[size];
+        int max = heap[0];
+        heap[0] = heap[size - 1];
         size--;
-
-        shiftDown(index);
-
+        shiftDown(0);
         return max;
+    }
+    int leftChild(int index){
+        return (index * 2) + 1;
+    }
+
+    int rightChild(int index){
+        return (index * 2) + 2;
     }
 
     void shiftDown(int index){
-        if(size == 0){
-            System.out.println("Heap is empty.");
+        while(leftChild(index) < size){
+            int largerChild = leftChild(index);
+            if(rightChild(index) < size && heap[rightChild(index)] > heap[largerChild]){
+                largerChild = rightChild(index);
+            }
+
+            if(heap[index] > heap[largerChild]){
+                break;
+            }
+            int temp = heap[index];
+            heap[index] = heap[largerChild];
+            heap[largerChild] = temp;
+            index = largerChild;
+        }
+    }
+    void remove(int index){
+        if(index == -1){
+            System.out.println("Invalid index!");
             return;
+        }
+        heap[index] = heap[size - 1];
+        size--;
+        int parent = index - 1 / 2;
+        if(index > 0 && heap[index] > heap[parent]){
+            shiftUp(index);
+        }else{
+            shiftDown(index);
         }
     }
 
@@ -88,7 +116,8 @@ class maxHeap{
         heap.insert(3);
         heap.insert(4);
         heap.insert(2);
-        System.out.println(heap.getMax());
+        heap.print();
+        System.out.println("\n"+heap.extractMax());
         heap.print();
         
     }
