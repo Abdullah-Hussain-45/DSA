@@ -46,25 +46,50 @@ class maxHeap{
         return max;
     }
 
-    void extractMax(){
+    int extractMax(){
+        if(size == 0){
+            System.out.println("Heap is empty.");
+            return -1;
+        }
+        int index = 0
+        heap[size] = heap[index];
+        int max = heap[size];
+        size--;
+
+        shiftDown(index);
+
+        return max;
+    }
+
+    void shiftDown(int index){
         if(size == 0){
             System.out.println("Heap is empty.");
             return;
         }
-        int index = 0
-        heap[size] = heap[index];
-        int min = heap[size];
-        size--;
-
-        shiftDown(index);
     }
 
-    void shiftDown(){
-        
+    void print(){
+        if(size == 0){
+            System.out.println("Heap is empty.");
+            return;
+        }
+        for(int i=0;i<size;i++){
+            System.out.print(heap[i]+" ");
+        }
+
     }
 
 
     public static void main(String[] args) {
+        maxHeap heap = new maxHeap(5);
+
+        heap.insert(5);
+        heap.insert(10);
+        heap.insert(3);
+        heap.insert(4);
+        heap.insert(2);
+        System.out.println(heap.getMax());
+        heap.print();
         
     }
 }

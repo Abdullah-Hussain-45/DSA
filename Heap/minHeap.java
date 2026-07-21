@@ -22,8 +22,8 @@ class minHeap{
     }
 
     void shiftUp(int index){
-        while(index > 0){
-            int child = index;
+        int child = index;
+        while(child > 0){
             int parent = (child - 1) / 2;
             if(heap[parent] > heap[child]){
                 int temp = heap[parent];
@@ -42,5 +42,28 @@ class minHeap{
         }
         int min = heap[0];
         return min;
+    }
+
+    void print(){
+        if(size == 0){
+            System.out.println("Heap is empty.");
+            return;
+        }
+        for(int i=0;i<size;i++){
+            System.out.print(heap[i]+" ");
+        }
+
+    }
+
+    public static void main(String[] args) {
+        minHeap heap = new minHeap(5);
+
+        heap.insert(5);
+        heap.insert(10);
+        heap.insert(3);
+        heap.insert(4);
+        heap.insert(2);
+        System.out.println(heap.getMin());
+        heap.print();
     }
 }
